@@ -31,13 +31,15 @@ class OrderController extends Controller
             'status' => 'required|in:recebido,pago,arte pronta,impressão pronta,estampado,entregue',
             'products.*.product_id' => 'required|exists:products,id',
             'products.*.quantity' => 'required|integer|min:1',
-            'products.*.unit_price' => 'required|numeric|min:0'
+            'products.*.unit_price' => 'required|numeric|min:0',
+            'notes' => 'nullable|string'
         ]);
 
         $order = Order::create([
             'customer_id' => $request->customer_id,
             'status' => $request->status,
-            'total' => 0
+            'total' => 0,
+            'notes' => $request->notes
         ]);
 
         $total = 0;
@@ -76,12 +78,14 @@ class OrderController extends Controller
             'status' => 'required|in:recebido,pago,arte pronta,impressão pronta,estampado,entregue',
             'products.*.product_id' => 'required|exists:products,id',
             'products.*.quantity' => 'required|integer|min:1',
-            'products.*.unit_price' => 'required|numeric|min:0'
+            'products.*.unit_price' => 'required|numeric|min:0',
+            'notes' => 'nullable|string'
         ]);
 
         $order->update([
             'customer_id' => $request->customer_id,
-            'status' => $request->status
+            'status' => $request->status,
+            'notes' => $request->notes
         ]);
 
         // Apaga os itens antigos

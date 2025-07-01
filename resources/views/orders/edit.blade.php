@@ -41,6 +41,11 @@
             </select>
         </div>
 
+        <div class="mb-3">
+            <label class="form-label">Observações</label>
+            <textarea name="notes" class="form-control" rows="3">{{ $order->notes }}</textarea>
+        </div>
+
         <h4 class="mt-4">Produtos</h4>
         <table class="table" id="tabela-produtos">
             <thead>
