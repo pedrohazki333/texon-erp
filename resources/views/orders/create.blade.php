@@ -111,7 +111,7 @@
                     </select>
                 </td>
                 <td>
-                    <input type="number" name="products[${index}][quantity]" class="form-control input-qtd" value="1" min="1" required>
+                    <input type="number" name="products[${index}][quantity]" class="form-control input-qtd" value="0" step="0.01" min="0" required>
                 </td>
                 <td>
                     <input type="number" name="products[${index}][unit_price]" class="form-control input-preco" value="0" step="0.01" min="0" required>

@@ -30,9 +30,9 @@ class OrderController extends Controller
             'customer_id' => 'required|exists:customers,id',
             'status' => 'required|in:recebido,pago,arte pronta,impressão pronta,estampado,entregue',
             'products.*.product_id' => 'required|exists:products,id',
-            'products.*.quantity' => 'required|integer|min:1',
-            'products.*.unit_price' => 'required|numeric|min:0',
-            'notes' => 'nullable|string'
+            'notes' => 'nullable|string',
+            'products.*.quantity' => 'required|numeric|min:0.1',
+            'products.*.unit_price' => 'required|numeric|min:0'
         ]);
 
         $order = Order::create([

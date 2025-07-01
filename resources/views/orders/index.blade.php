@@ -56,13 +56,6 @@
         </tbody>
     </table>
 
-    {{-- Paginação (caso esteja usando paginate() no controller) --}}
-    @if (method_exists($orders, 'links'))
-        <div class="mt-3">
-            {{ $orders->links() }}
-        </div>
-    @endif
-
     @push('scripts')
         <script>
             $(document).ready(function() {
