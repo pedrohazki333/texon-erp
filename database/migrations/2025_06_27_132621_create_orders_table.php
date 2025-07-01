@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->enum('status', ['recebido', 'pago', 'arte pronta', 'impressão pronta', 'estampado', 'entregue'])->default('recebido');
             $table->decimal('total', 10, 2)->default(0);
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }
