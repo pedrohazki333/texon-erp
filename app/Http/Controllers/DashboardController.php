@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Carbon;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Order;
@@ -10,6 +11,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $now = Carbon::now();
+        // Total de pedidos pagos no mês atual
+        $totalPagosOuEntreguesMes = Order::whereIn('status', ['pago', 'entregue'])
+            ->whereMonth('created_at', $now->month)
+            ->whereYear('created_at', $now->year)
+            ->sum('total');
+
         $customerCount = Customer::count();
         $productCount = Product::count();
         $orderCount = Order::count();
@@ -21,7 +29,8 @@ class DashboardController extends Controller
             'customerCount' => $customerCount,
             'productCount'  => $productCount,
             'orderCount'    => $orderCount,
-            'ordersByStatus'=> $ordersByStatus,
+            'ordersByStatus' => $ordersByStatus,
+            'totalPagosMes' => $totalPagosOuEntreguesMes,
         ]);
     }
 }

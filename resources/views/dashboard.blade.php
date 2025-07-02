@@ -16,8 +16,8 @@
         <div class="col-md-4">
             <div class="card text-center">
                 <div class="card-body">
-                    <h5 class="card-title">Produtos</h5>
-                    <h2>{{ $productCount }}</h2>
+                    <h5 class="card-title">Pedidos Pagos (Mês Atual)</h5>
+                    <h2>R${{ $totalPagosMes }}</h2>
                 </div>
             </div>
         </div>

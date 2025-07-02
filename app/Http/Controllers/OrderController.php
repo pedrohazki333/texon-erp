@@ -19,7 +19,7 @@ class OrderController extends Controller
     public function create()
     {
         $products = Product::all();
-        $customers = Customer::all();
+        $customers = Customer::orderBy('first_name')->orderBy('last_name')->get();
         $statuses = ['recebido', 'pago', 'arte pronta', 'impressão pronta', 'estampado', 'entregue'];
         return view('orders.create', compact('products', 'customers', 'statuses'));
     }

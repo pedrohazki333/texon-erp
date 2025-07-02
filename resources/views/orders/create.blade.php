@@ -31,7 +31,7 @@
 
         <div class="mb-3">
             <label class="form-label">Cliente</label>
-            <select name="customer_id" class="form-select" required>
+            <select name="customer_id" id="select-cliente" required>
                 <option value="">Selecione um cliente</option>
                 @foreach ($customers as $cliente)
                     <option value="{{ $cliente->id }}">{{ $cliente->first_name }} {{ $cliente->last_name }}</option>
@@ -79,6 +79,19 @@
             <button type="submit" class="btn btn-success">Salvar Pedido</button>
         </div>
     </form>
+
+    @push('scripts')
+        <script>
+            $(function() {
+                $('#select-cliente').select2({
+                    placeholder: "Selecione um cliente",
+                    allowClear: true,
+                    minimumResultsForSearch: 5, // mostra busca apenas se tiver + de 5 itens (opcional)
+                    width: '100%' // garante que o width siga a largura do form
+                });
+            });
+        </script>
+    @endpush
 
     <script>
         const produtos = @json($products);
