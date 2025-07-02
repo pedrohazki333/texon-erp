@@ -12,6 +12,10 @@
     <!-- Icons (opcional) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
+    <!-- DataTables Buttons CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+
+
     <style>
         body {
             min-height: 100vh;
@@ -73,13 +77,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm navbar-custom">
         <div class="container-fluid">
-            <form class="d-flex ms-auto me-3">
-                <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit">
-                    <i class="bi bi-search"></i>
-                </button>
-            </form>
-            <div class="dropdown">
+            <div class="dropdown d-flex ms-auto">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                     <i class="bi bi-person-circle fs-5"></i>
                 </a>
@@ -106,6 +104,17 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- DataTables Buttons JS -->
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+
+    <!-- Exportações -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
 
     @stack('scripts')
 </body>
