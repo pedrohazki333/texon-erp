@@ -5,19 +5,20 @@
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="d-flex align-items-center justify-content-center vh-100">
+<body class="d-flex align-items-center justify-content-center vh-100 bg-dark text-light">
     <div class="w-100" style="max-width: 330px;">
+        <h1 class="text-center mb-5 h1">TEXON ERP</h1>
         <h1 class="h3 mb-3 fw-normal text-center">Login</h1>
         @if ($errors->any())
             <div class="alert alert-danger">{{ $errors->first() }}</div>
         @endif
         <form method="POST" action="{{ url('/login') }}">
             @csrf
-            <div class="form-floating mb-2">
+            <div class="form-floating mb-2 text-dark">
                 <input type="text" class="form-control" id="name" name="name" placeholder="Usuário" required>
                 <label for="name">Usuário</label>
             </div>
-            <div class="form-floating mb-2">
+            <div class="form-floating mb-2 text-dark">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Senha" required>
                 <label for="password">Senha</label>
             </div>

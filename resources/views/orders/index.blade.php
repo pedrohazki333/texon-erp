@@ -36,7 +36,7 @@
         <tbody>
             @foreach ($orders as $order)
                 <tr>
-                    <td>#{{ $order->id }}</td>
+                    <th scope="row">{{ $order->id }}</th>
                     <td>{{ $order->customer->first_name }} {{ $order->customer->last_name }}</td>
                     <td>{{ ucfirst($order->status) }}</td>
                     <td>R$ {{ number_format($order->total, 2, ',', '.') }}</td>

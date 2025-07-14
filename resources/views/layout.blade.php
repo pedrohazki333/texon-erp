@@ -39,7 +39,6 @@
 
         .sidebar a:hover,
         .sidebar a.active {
-            background-color: #495057;
             color: #fff;
         }
 
@@ -61,7 +60,7 @@
 <body>
 
     <!-- Sidebar -->
-    <div class="sidebar position-fixed top-0 start-0 p-3" style="width: 240px;">
+    <div class="sidebar bg-dark position-fixed top-0 start-0 p-3" style="width: 240px;">
         <h5 class="text-white mb-4">TEXON ERP</h5>
         <a href="{{ route('dashboard') }}" class="">
             <i class="bi bi-speedometer2 me-2"></i> Dashboard

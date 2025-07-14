@@ -12,7 +12,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::with('customer')->latest()->paginate(10);
+        $orders = Order::with('customer')->latest()->get();
         return view('orders.index', compact('orders'));
     }
 
@@ -77,7 +77,7 @@ class OrderController extends Controller
             'customer_id' => 'required|exists:customers,id',
             'status' => 'required|in:recebido,pago,arte pronta,impressão pronta,estampado,entregue',
             'products.*.product_id' => 'required|exists:products,id',
-            'products.*.quantity' => 'required|integer|min:1',
+            'products.*.quantity' => 'required|numeric|min:1',
             'products.*.unit_price' => 'required|numeric|min:0',
             'notes' => 'nullable|string'
         ]);
