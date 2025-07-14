@@ -1,7 +1,13 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
+
 test('dashboard route returns summary data', function () {
-    $response = $this->get('/');
+    $user = User::factory()->create();
+    $response = $this->actingAs($user)->get('/');
 
     $response->assertStatus(200)
         ->assertViewHasAll([
@@ -9,5 +15,7 @@ test('dashboard route returns summary data', function () {
             'productCount',
             'orderCount',
             'ordersByStatus',
+            'pendingDeliveryOrders',
+            'pendingDeliveryCount',
         ]);
 });

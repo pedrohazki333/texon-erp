@@ -25,12 +25,21 @@ class DashboardController extends Controller
             ->groupBy('status')
             ->pluck('count', 'status');
 
+        $pendingDeliveryOrders = Order::where('status', '!=', 'entregue')
+            ->with('customer')
+            ->orderByDesc('updated_at')
+            ->get();
+
+        $pendingDeliveryCount = $pendingDeliveryOrders->count();
+
         return view('dashboard', [
             'customerCount' => $customerCount,
             'productCount'  => $productCount,
             'orderCount'    => $orderCount,
             'ordersByStatus' => $ordersByStatus,
             'totalPagosMes' => $totalPagosOuEntreguesMes,
+            'pendingDeliveryOrders' => $pendingDeliveryOrders,
+            'pendingDeliveryCount' => $pendingDeliveryCount,
         ]);
     }
 }
