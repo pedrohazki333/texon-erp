@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DtfPrintController;
+use App\Http\Controllers\EmployeeController;
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -19,4 +21,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('customers', CustomerController::class);
     Route::resource('products', ProductController::class);
     Route::resource('orders', OrderController::class);
+    Route::resource('employees', EmployeeController::class);
+    Route::resource('dtfprints', DtfPrintController::class);
 });

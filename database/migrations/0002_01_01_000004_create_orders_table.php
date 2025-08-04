@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('employee_id')->constrained()->onDelete('cascade');
             $table->enum('status', ['recebido', 'pago', 'arte pronta', 'impressão pronta', 'estampado', 'entregue'])->default('recebido');
             $table->decimal('total', 10, 2)->default(0);
             $table->text('notes')->nullable();

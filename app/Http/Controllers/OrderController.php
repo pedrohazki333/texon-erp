@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Customer;
+use App\Models\Employee;
 use App\Models\OrderItem;
 
 class OrderController extends Controller
@@ -20,14 +21,16 @@ class OrderController extends Controller
     {
         $products = Product::all();
         $customers = Customer::orderBy('first_name')->orderBy('last_name')->get();
+        $employees = Employee::orderBy('first_name')->orderBy('last_name')->get();
         $statuses = ['recebido', 'pago', 'arte pronta', 'impressão pronta', 'estampado', 'entregue'];
-        return view('orders.create', compact('products', 'customers', 'statuses'));
+        return view('orders.create', compact('products', 'customers', 'employees', 'statuses'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'customer_id' => 'required|exists:customers,id',
+            'employee_id' => 'required|exists:employees,id',
             'status' => 'required|in:recebido,pago,arte pronta,impressão pronta,estampado,entregue',
             'products.*.product_id' => 'required|exists:products,id',
             'notes' => 'nullable|string',
@@ -37,6 +40,7 @@ class OrderController extends Controller
 
         $order = Order::create([
             'customer_id' => $request->customer_id,
+            'employee_id' => $request->employee_id,
             'status' => $request->status,
             'total' => 0,
             'notes' => $request->notes
@@ -64,6 +68,7 @@ class OrderController extends Controller
     {
         $order = Order::with('items')->findOrFail($id);
         $customers = Customer::all();
+        $employees = Employee::all();
         $products = Product::all();
         $statuses = ['recebido', 'pago', 'arte pronta', 'impressão pronta', 'estampado', 'entregue'];
         return view('orders.edit', compact('order', 'customers', 'products', 'statuses'));
@@ -75,6 +80,7 @@ class OrderController extends Controller
 
         $request->validate([
             'customer_id' => 'required|exists:customers,id',
+            'employee_id' => 'required|exists:employees,id',
             'status' => 'required|in:recebido,pago,arte pronta,impressão pronta,estampado,entregue',
             'products.*.product_id' => 'required|exists:products,id',
             'products.*.quantity' => 'required|numeric|min:1',

@@ -30,6 +30,16 @@
         @csrf
 
         <div class="mb-3">
+            <label class="form-label">Vendedor</label>
+            <select name="employee_id" id="select-vendedor" required>
+                <option value="">Selecione um vendedor</option>
+                @foreach ($employees as $employee)
+                    <option value="{{ $employee->id }}">{{ $employee->first_name }} {{ $employee->last_name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-3">
             <label class="form-label">Cliente</label>
             <select name="customer_id" id="select-cliente" required>
                 <option value="">Selecione um cliente</option>
@@ -43,7 +53,7 @@
             <label class="form-label">Status do Pedido</label>
             <select name="status" class="form-select" required>
                 @foreach ($statuses as $status)
-                    <option value="{{ $status }}">{{ ucfirst($status) }}</option>
+                    <option class="text-uppercase" value="{{ $status }}">{{ ucfirst($status) }}</option>
                 @endforeach
             </select>
         </div>
@@ -85,6 +95,15 @@
             $(function() {
                 $('#select-cliente').select2({
                     placeholder: "Selecione um cliente",
+                    allowClear: true,
+                    minimumResultsForSearch: 5, // mostra busca apenas se tiver + de 5 itens (opcional)
+                    width: '100%' // garante que o width siga a largura do form
+                });
+            });
+
+            $(function() {
+                $('#select-vendedor').select2({
+                    placeholder: "Selecione um vendedor",
                     allowClear: true,
                     minimumResultsForSearch: 5, // mostra busca apenas se tiver + de 5 itens (opcional)
                     width: '100%' // garante que o width siga a largura do form

@@ -17,6 +17,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
+    {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
+
 
 
     <style>
@@ -74,6 +76,12 @@
         <a href="{{ route('products.index') }}" class="">
             <i class="bi bi-box-seam me-2"></i> Produtos
         </a>
+        <a href="{{ route('employees.index') }}" class="">
+            <i class="bi bi-person-gear me-2"></i> Funcionários
+        </a>
+        <a href="{{ route('dtfprints.index') }}" class="">
+            <i class="bi bi-printer me-2"></i> Impressões DTF
+        </a>
     </div>
 
     <!-- Navbar -->
@@ -127,6 +135,9 @@
     <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
     @stack('scripts')
