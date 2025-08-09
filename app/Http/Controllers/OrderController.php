@@ -90,6 +90,7 @@ class OrderController extends Controller
 
         $order->update([
             'customer_id' => $request->customer_id,
+            'employee_id' => $request->employee_id,
             'status' => $request->status,
             'notes' => $request->notes
         ]);
