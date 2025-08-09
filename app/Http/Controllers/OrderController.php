@@ -71,7 +71,7 @@ class OrderController extends Controller
         $employees = Employee::all();
         $products = Product::all();
         $statuses = ['recebido', 'pago', 'arte pronta', 'impressão pronta', 'estampado', 'entregue'];
-        return view('orders.edit', compact('order', 'customers', 'products', 'statuses'));
+        return view('orders.edit', compact('order', 'customers', 'employees', 'products', 'statuses'));
     }
 
     public function update(Request $request, $id)

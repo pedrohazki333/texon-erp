@@ -42,7 +42,7 @@
                     <td>{{ ucfirst($order->status) }}</td>
                     <td>R$ {{ number_format($order->total, 2, ',', '.') }}</td>
                     <td>{{ $order->created_at->format('d/m/Y H:i') }}</td>
-                    <td>{{ $order->employee->first_name }} {{ $order->customer->last_name }}</td>
+                    <td>{{ $order->employee->first_name }} {{ $order->employee->last_name }}</td>
                     <td class="d-flex gap-2">
                         <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-sm btn-warning">Editar</a>
 
